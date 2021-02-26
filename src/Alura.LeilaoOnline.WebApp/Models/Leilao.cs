@@ -7,19 +7,19 @@ namespace Alura.LeilaoOnline.WebApp.Models
     {        
         public int Id { get; set; }
         
-        [Required(ErrorMessage = "Título é obrigatório")] 
-        [Display(Name = "Título", Prompt = "Digite o título do leilão")]
+        [Required(ErrorMessage = "Tï¿½tulo ï¿½ obrigatï¿½rio")] 
+        [Display(Name = "Tï¿½tulo", Prompt = "Digite o tï¿½tulo do leilï¿½o")]
         public string Titulo { get; set; }
 
-        [Display(Name = "Descrição")]
+        [Display(Name = "Descriï¿½ï¿½o")]
         public string Descricao { get; set; }
 
-        [Display(Name = "Início do Pregão")]
-        [DataType(DataType.DateTime, ErrorMessage = "Data inválida")]
+        [Display(Name = "Inï¿½cio do Pregï¿½o")]
+        [DataType(DataType.DateTime, ErrorMessage = "Data invï¿½lida")]
         public DateTime? Inicio { get; set; }
 
-        [Display(Name = "Término do Pregão")]
-        [DataType(DataType.DateTime, ErrorMessage = "Data inválida")]
+        [Display(Name = "Tï¿½rmino do Pregï¿½o")]
+        [DataType(DataType.DateTime, ErrorMessage = "Data invï¿½lida")]
         public DateTime? Termino { get; set; }
 
         public int IdCategoria { get; set; }
