@@ -1,8 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Alura.LeilaoOnline.WebApp.Models;
 
-namespace Alura.LeilaoOnline.WebApp.Dados.EFCore
-
+namespace Alura.LeilaoOnline.WebApp.Dados.EfCore
 {
     public class AppDbContext : DbContext
     {

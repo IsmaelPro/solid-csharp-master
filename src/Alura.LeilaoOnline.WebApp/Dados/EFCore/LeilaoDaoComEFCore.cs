@@ -1,41 +1,36 @@
-﻿using Alura.LeilaoOnline.WebApp.Models;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using Alura.LeilaoOnline.WebApp.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace Alura.LeilaoOnline.WebApp.Dados.EFCore
+namespace Alura.LeilaoOnline.WebApp.Dados.EfCore
 {
-    public class LeilaoDaoComEFCore : ILeilaoDao
+    public class LeilaoDaoComEfCore : ILeilaoDao
     {
-        private AppDbContext _context;
+        AppDbContext _context;
 
-        public LeilaoDaoComEFCore()
+        public LeilaoDaoComEfCore(AppDbContext context)
         {
-            _context = new AppDbContext();
+            _context = context;
         }
 
-        public IEnumerable<Categoria> BuscarCategorias()
+        public Leilao BuscarLeilaoPorId(int id)
         {
-            return _context.Categorias.ToList();
-        }
-         public IEnumerable<Leilao> BuscarLeiloes()
-        {
-            return _context.Leiloes.ToList();
+            return _context.Leiloes.Find(id);
         }
 
-        public Leilao BuscarPorId(int id)
-        {
-            return _context.Leiloes.First(x => x.Id == id);
-        }
+        public IEnumerable<Leilao> BuscarTodosLeiloes() => _context.Leiloes.Include(l => l.Categoria);
 
-        public void Incluir(Leilao leilao)
+        public IEnumerable<Categoria> BuscarTodasCategorias() => _context.Categorias;
+
+        public void Incluir(Leilao obj)
         {
-            _context.Add(leilao);
+            _context.Leiloes.Add(obj);
             _context.SaveChanges();
         }
 
-        public void Alterar(Leilao leilao)
+        public void Alterar(Leilao obj)
         {
-            _context.Leiloes.Update(leilao);
+            _context.Leiloes.Update(obj);
             _context.SaveChanges();
         }
 
